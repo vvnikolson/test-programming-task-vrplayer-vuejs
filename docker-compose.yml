@@ -1,0 +1,48 @@
+version: '3'
+services:
+  mysql-compose:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: 'mysql'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'qwerty'
+      MYSQL_ROOT_PASSWORD: 'qwerty'
+    ports:
+    - "3360:3306"
+    volumes:
+    - mysql_0:/var/lib/mysql
+    networks:
+    - compose-network
+    
+
+      
+#  app-back:
+#    build:
+#      dockerfile: Dockerfile-back-run
+#      context: ./rs-nov-test-task.backend/
+#    ports:
+#    - "8080:8080"
+#    depends_on:
+#    - mysql-compose
+#    networks:
+#    - compose-network
+  
+  
+  
+  app-front:
+    build:
+      dockerfile: Dockerfile-front-webpack
+      context: ./rs-nov-test-task.frontend
+    ports:
+    - "8000:8000"
+    working_dir: /code
+    environment:
+      HOST: "0.0.0.0"
+
+networks: 
+  compose-network:
+    driver: bridge
+    
+volumes:
+  postgres_2:
+  mysql_0:

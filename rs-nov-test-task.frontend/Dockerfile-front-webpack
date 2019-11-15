@@ -1,0 +1,8 @@
+FROM node:alpine
+RUN mkdir /code
+ADD . /code/
+WORKDIR /code/
+
+RUN yarn cache clean && yarn install --non-interactive --force && npm rebuild node-sass
+
+CMD yarn start 
