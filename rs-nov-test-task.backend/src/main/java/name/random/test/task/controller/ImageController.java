@@ -1,6 +1,10 @@
 package name.random.test.task.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import name.random.test.task.DTO.ImageDTO;
+import name.random.test.task.domain.Image;
+import name.random.test.task.domain.view.Views;
+import name.random.test.task.service.ImageService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -13,10 +17,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import name.random.test.task.DTO.ImageDTO;
-import name.random.test.task.domain.Image;
-import name.random.test.task.domain.view.Views;
-import name.random.test.task.service.ImageService;
 
 import java.util.List;
 

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="${isDevMode} ? 'http://localhost:8000/assets/css/main.css' : '/assets/css/main.css'" />
     <style>
         html, body {
             height: 100%;
         }
     </style>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="http://localhost:8000/main.css" />
+
 </head>
 <body>
     <div id="app"></div>
-    <script src="http://localhost:8000/main.js"></script>
-
+    <script th:src="${isDevMode} ? 'http://localhost:8000/assets/js/main.js' : '/assets/js/main.js'"></script>
 </body>
 </html>

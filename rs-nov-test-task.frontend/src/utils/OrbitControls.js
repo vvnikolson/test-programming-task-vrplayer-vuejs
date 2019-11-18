@@ -15,7 +15,7 @@ import {
 	TOUCH,
 	Vector2,
 	Vector3
-} from "three/build/three.module.js";
+} from "three";
 
 // Немного модифицированый оьект управления камерой,
 // а именно изменён метод handleMouseMoveRotate: область видимости метода для доступа напрямую извне и

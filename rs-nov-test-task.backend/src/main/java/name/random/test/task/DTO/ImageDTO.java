@@ -1,8 +1,8 @@
 package name.random.test.task.DTO;
 
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 import name.random.test.task.controller.validation.FileFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.GroupSequence;
 import javax.validation.constraints.NotEmpty;

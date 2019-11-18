@@ -34,10 +34,7 @@
         },
 
         methods: {
-            ...mapActions('alert', ['addMessage']),
-            addTestNotify() {
-                this.addMessage({messageText:'asdasd'})
-            }
+            ...mapActions('alert', ['addMessage'])
         }
     }
 </script>

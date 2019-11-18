@@ -29,15 +29,15 @@ services:
   
   
   
-  app-front:
-    build:
-      dockerfile: Dockerfile-front-webpack
-      context: ./rs-nov-test-task.frontend
-    ports:
-    - "8000:8000"
-    working_dir: /code
-    environment:
-      HOST: "0.0.0.0"
+#  app-front:
+#    build:
+#      dockerfile: Dockerfile-front-webpack
+#      context: ./rs-nov-test-task.frontend
+#    ports:
+#    - "8000:8000"
+#    working_dir: /code
+#    environment:
+#      HOST: "0.0.0.0"
 
 networks: 
   compose-network:

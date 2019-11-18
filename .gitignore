@@ -52,3 +52,5 @@ transaction-logs
 secrets.yml
 .gradletasknamecache
 .sts4-cache
+rs-nov-test-task.frontend/dist
+rs-nov-test-task.backend/src/main/resources/static

@@ -5,9 +5,9 @@
         <div class="search-group">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Image name</span>
+                <span class="input-group-text">Filter by</span>
             </div>
-            <input type="text" class="form-control" placeholder="name" v-model="search">
+            <input type="text" class="form-control" placeholder="Image name" v-model="search">
             <b-form-checkbox class="mb-2 pt-2 ml-2 mr-sm-2 mb-sm-0" v-model="sort_manualCameraControl">Manual camera control</b-form-checkbox>
         </div>
         </div>

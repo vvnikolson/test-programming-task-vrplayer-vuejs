@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import name.random.test.task.domain.view.Views;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -52,7 +52,7 @@ public class Image {
     @JsonProperty("preview")
     @JsonView(Views.ImageInfo.class)
     private String generatePreviewLink() {
-        return ServletUriComponentsBuilder.fromCurrentContextPath()
+        return ServletUriComponentsBuilder/*.fromCurrentContextPath()*/.newInstance().scheme("http").host("91.103.252.69")
                 .pathSegment("images")
                 .pathSegment(this.getId().toString())
                 .pathSegment("preview")
@@ -62,7 +62,7 @@ public class Image {
     @JsonProperty("source")
     @JsonView(Views.ImageInfo.class)
     private String generateSourceLink() {
-        return ServletUriComponentsBuilder.fromCurrentContextPath()
+        return ServletUriComponentsBuilder/*.fromCurrentContextPath()*/.newInstance().scheme("http").host("91.103.252.69")
                 .pathSegment("images")
                 .pathSegment(this.getId().toString())
                 .pathSegment("source")

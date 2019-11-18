@@ -1,7 +1,19 @@
 //import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
-import * as THREE from "three"
+import {
+    Vector3,
+    WebGLRenderer,
+    PerspectiveCamera,
+    TextureLoader,
+    MeshPhongMaterial,
+    BackSide,
+    SphereGeometry,
+    Mesh,
+    Scene,
+    PointLight
+
+} from "three"
 import {OrbitControls} from 'utils/OrbitControls.js'
-import {StereoEffect} from "three/examples/jsm/effects/StereoEffect.js"
+import {StereoEffect} from "utils/StereoEffect.js"
 import {addListener, removeAllListeners} from 'utils/EventHandlersHelper.js'
 
 import ImageService from 'service/imageService.js'
@@ -45,7 +57,7 @@ const getters = {
         if(!state.camera) {
             return null
         }
-        let vector = new THREE.Vector3( 0, 0, 0 )
+        let vector = new Vector3( 0, 0, 0 )
         state.camera.getWorldDirection(vector)
         return vector
     }
@@ -200,7 +212,7 @@ const mutations = {
         state.height = height
     },
     INITIALIZE_RENDERER(state, context) {
-        state.renderer = new THREE.WebGLRenderer({
+        state.renderer = new WebGLRenderer({
             antialias: true,
             preserveDrawingBuffer: true
         })
@@ -217,7 +229,7 @@ const mutations = {
     },
         //
     INITIALIZE_CAMERA(state) {
-        state.camera = new THREE.PerspectiveCamera(
+        state.camera = new PerspectiveCamera(
             75, // Angle
             state.width/ state.height, // Aspect Ratio
             1, // Near view
@@ -242,33 +254,33 @@ const mutations = {
     },
 
     LOAD_MATERIAL(state, source) {
-        const loader = new THREE.TextureLoader()
+        const loader = new TextureLoader()
         let texture = loader.load(source)
         if(state.material) {
             state.material.map = texture
         } else {
-            state.material = new THREE.MeshPhongMaterial({
+            state.material = new MeshPhongMaterial({
                 color: "#ffffff",
                 shininess: 0,
                 map: texture,
                 specular: "#000000",
-                side: THREE.BackSide,
+                side: BackSide,
             })
-            state.material.side = THREE.BackSide
+            state.material.side = BackSide
         }
     },
 
     INITIALIZE_IMAGE_SPHERE(state) {
 
-        let geometry = new THREE.SphereGeometry(330, 128, 128)
-        state.imageSphere = new THREE.Mesh(geometry, state.material)
+        let geometry = new SphereGeometry(330, 128, 128)
+        state.imageSphere = new Mesh(geometry, state.material)
         state.imageSphere.rotation.y = Math.PI /1.8
         state.imageSphere.position.set(0,0,0)
-        state.imageSphere.side = THREE.BackSide
+        state.imageSphere.side = BackSide
     },
     INITIALIZE_SCENE(state) {
-        state.scene = new THREE.Scene()
-        let lightSource = new THREE.PointLight(0xffffff, 1, 1000, 0)
+        state.scene = new Scene()
+        let lightSource = new PointLight(0xffffff, 1, 1000, 0)
         lightSource.position.set(0, 0, 0)
         state.scene.add(state.camera)
         state.scene.add(lightSource)
